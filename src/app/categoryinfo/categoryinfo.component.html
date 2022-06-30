@@ -1,0 +1,35 @@
+<h2>Category info</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{ category.id }}</th>
+            <td>{{ category.name }}</td>
+            <td> <img class="d-block w-25" src="{{ category.image }}" /></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Related Products</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products|async">
+            <th scope="row">{{ product.id }}</th>
+            <td>{{ product.title }}</td>
+            <td> {{ product.description }}</td>
+            <td><a class="m-1" [routerLink]="['/products',product.id]">View</a> </td>
+        </tr>
+    </tbody>
+</table>

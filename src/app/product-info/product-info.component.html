@@ -1,0 +1,28 @@
+<div class="container">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Product Details</h1>
+        </div>
+    </section>
+    <div class="row">
+        <div class="card col-12">
+            <div *ngFor="let image of product.images; index as i; first as isFirst">
+                <img class="d-block w-75 m-auto" *ngIf="isFirst" src="{{ image }}" />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ product.price|currency }}</h6>
+                <p class="lead">{{ product.description }}</p>
+                <h6 class="card-subtitle mb-2 text-muted">{{ product.category.name }}</h6>
+                <br>
+                <div *ngIf="isUserLoggedIn">
+                    <a class="btn btn-warning m-1" [routerLink]="['/editproduct',product.id]">Edit</a>
+                    <a class="btn btn-danger m-1" (click)="deleteProduct()" onclick="return confirm('Are you sure you want to remove this item?')">Remove</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

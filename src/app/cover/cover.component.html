@@ -1,0 +1,35 @@
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">UpToSale Store</h1>
+        <p class="lead">Here is the only store that has the baset products you can find. We are curtain that our plethera of store products will provide you a choice to your liking. </p>
+        <p class="lead">
+            <a [routerLink]="['productslist']" class="btn btn-secondary">Check Out Our Products!</a>
+        </p>
+    </main>
+    <div class="py-5 bg-light">
+
+        <div class="row">
+            <h3>Take a look at our examples</h3>
+            <br>
+            <div *ngFor="let pro of data;let i=index" class="col-md-4">
+                <div *ngIf="i < 3">
+                    <div class="card mb-4 box-shadow">
+                        <div *ngFor="let image of pro.images; index as i; first as isFirst">
+                            <img class="d-block w-100" *ngIf="isFirst" src="{{ image }}" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pro.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ pro.price|currency }}</h6>
+                            <p class="card-text">{{ pro.description }}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ pro.category.name }}</h6>
+                            <br>
+                            <a class="btn btn-primary" [routerLink]="['/products',pro.id]">See Details</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

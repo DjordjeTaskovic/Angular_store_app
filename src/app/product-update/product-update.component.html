@@ -1,0 +1,14 @@
+<h2>Edit Product</h2>
+<form [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
+    <div class="form-group">
+        <input type="text" name="title" id="title" class="form-control" formControlName="title" placeholder="Title" />
+        <p class="error-message" *ngIf="editForm.get('title')?.hasError('required')">Title is required.</p>
+
+    </div>
+    <div class="form-group">
+        <input type="text" name="price" id="price" class="form-control" formControlName="price" placeholder="Price" />
+        <p class=" error-message " *ngIf="editForm.get( 'price')?.hasError( 'required') ">price is required.</p>
+    </div>
+    <br>
+    <button class="btn btn-primary " type="submit " [disabled]="!editForm.valid ">Update</button>
+</form>

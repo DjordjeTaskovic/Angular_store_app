@@ -1,0 +1,21 @@
+<header>
+    <div class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand" [routerLink]="['/']">UpToSale</h3>
+
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link " [routerLink]="['/productslist']">Products</a>
+                <a class="nav-link " [routerLink]="['/categories']">Categories</a>
+                <a class="nav-link " [routerLink]="['/addproduct']">Add-Product</a>
+                <div *ngIf="isUserLoggedIn; else isLogOut">
+                    <a class="nav-link " [routerLink]="['/logout']">Logout</a>
+                </div>
+
+                <ng-template #isLogOut>
+                    <a class="nav-link " [routerLink]="['/login']">Login</a>
+                </ng-template>
+            </nav>
+        </div>
+
+    </div>
+</header>

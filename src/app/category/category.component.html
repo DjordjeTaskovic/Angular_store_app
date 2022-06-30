@@ -1,0 +1,28 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Categories</h1>
+    </div>
+</section>
+<hr>
+<button class="btn btn-primary" [routerLink]="['/addcategories']">Add Category</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of data|async">
+            <th scope="row">{{ d.id }}</th>
+            <td>{{ d.name }}</td>
+            <td> <img class="d-block w-25" src="{{ d.image }}" alt="category_image" /></td>
+            <td>
+                <a class="m-1" [routerLink]="['/categoryinfo',d.id]">View</a>
+                <a class="m-1" [routerLink]="['/editcategories',d.id]">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

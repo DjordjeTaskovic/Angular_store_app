@@ -1,0 +1,39 @@
+<div class="container">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Products</h1>
+            <p class="lead text-muted">Here you can find some of the top representitive products avalailabile on sale this week. Make sure to pick something sweet, as the mater of your liking. </p>
+        </div>
+    </section>
+    <div class="py-5 bg-light">
+        <div class="row">
+            <div *ngFor="let pro of data| paginate: { 
+            itemsPerPage: 10,
+             currentPage: page }" class="col-md-4">
+
+                <div class="card mb-4 box-shadow">
+                    <div *ngFor="let image of pro.images; index as i; first as isFirst">
+                        <img class="d-block w-100" *ngIf="isFirst" src="{{ image }}" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pro.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ pro.price|currency }}</h6>
+                        <p class="card-text">{{ pro.description }}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ pro.category.name }}</h6>
+                        <br>
+                        <a class="btn btn-primary" [routerLink]="['/products',pro.id]">See Details</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </div>
+        </div>
+
+    </div>
+
+</div>
